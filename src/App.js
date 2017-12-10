@@ -4,18 +4,17 @@ import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 import BookSearch from './BookSearch'
 import * as BooksAPI from './BooksAPI'
+import Modal from 'react-modal'
 import './App.css'
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
-    showSearchPage: false,
     books: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState({ books })
-      console.log(books);
     })
   }
 
