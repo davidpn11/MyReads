@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 import BookSearch from './BookSearch'
 import * as BooksAPI from './BooksAPI'
-import Modal from 'react-modal'
 import './App.css'
 
 class BooksApp extends Component {
