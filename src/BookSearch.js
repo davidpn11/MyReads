@@ -7,7 +7,8 @@ import * as BooksAPI from './BooksAPI'
 class BookSearch extends Component {
 
     static propTypes = {
-        addBook: PropTypes.func.isRequired
+        addBook: PropTypes.func.isRequired,
+        booksArray: PropTypes.array.isRequired
     }
 
     state = {
@@ -17,7 +18,7 @@ class BookSearch extends Component {
     searchBook = (query) => {
         if (query) {
             BooksAPI.search(query).then(searchedBooks => {
-                 this.setState({ searchedBooks })
+                this.setState({ searchedBooks })
             });
         }
     }
@@ -41,8 +42,10 @@ class BookSearch extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.state.searchedBooks.map(book => {
-                            // console.log(book.title, book.authors)
-                         return  <Book key={book.id} bookData={book} changeShelf={this.changeShelf} />
+                            let hasBook = this.props.booksArray.find(b => b.id === book.id)
+                            let hasShelf
+                            (hasBook) ? hasShelf = hasBook.shelf : hasShelf = ""
+                            return <Book key={book.id} bookData={book} currentShelf={hasShelf} changeShelf={this.changeShelf} />
                         })}
                     </ol>
                 </div>
