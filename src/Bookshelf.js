@@ -62,6 +62,7 @@ class Bookshelf extends Component {
                         <div>
                             <i className="close-modal" onClick={this.closeModal}></i>                            
                             <h2>{this.state.currentBook.title}</h2>
+                            <span className='i mb2'>{this.state.currentBook.subtitle}</span>
                             <div className="modal-content">
                                 <div className="img-modal">
                                     <img src={this.state.currentBook.imageLinks.thumbnail} className="mb3"/>
