@@ -64,7 +64,7 @@ class Bookshelf extends Component {
                             <h2>{this.state.currentBook.title}</h2>
                             <div className="modal-content">
                                 <div className="img-modal">
-                                    <img src={this.state.currentBook.imageLinks.thumbnail} />
+                                    <img src={this.state.currentBook.imageLinks.thumbnail} className="mb3"/>
                                     <select defaultValue={this.state.currentBook.shelf || "none"} onChange={(event) => { this.changeShelf(this.state.currentBook.id, event.target.value) }}>
                                         <option value="none" disabled>Move to...</option>
                                         <option value="currentlyReading">Currently Reading</option>
