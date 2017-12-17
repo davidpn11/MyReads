@@ -60,7 +60,7 @@ class Bookshelf extends Component {
                     contentLabel="Example Modal">
                     {this.state.currentBook ?
                         <div>
-                            <i className="close-modal" onClick={this.closeModal}></i>
+                            <i className="close-modal" onClick={this.closeModal}></i>                            
                             <h2>{this.state.currentBook.title}</h2>
                             <div className="modal-content">
                                 <div className="img-modal">

@@ -199,5 +199,12 @@ body, .app {
   width: 300px;
   height: 200px;
   margin-left: 20px;
-  /* background-color:blue; */
+}
+
+.loading-spinner {
+  width: 100px;
+  position: absolute;
+  display: flex;
+  align-self: center;
+  left: 12%;
 }
