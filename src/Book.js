@@ -5,7 +5,13 @@ class Book extends Component {
     static propTypes = {
         bookData: PropTypes.object.isRequired,
         changeShelf: PropTypes.func.isRequired,
-        currentShelf: PropTypes.string
+        currentShelf: PropTypes.string,
+        openBookDetails: PropTypes.func.isRequired
+    }
+
+
+    openBook = () => {
+        this.props.openBookDetails(this.props.bookData)
     }
 
     render() {
@@ -14,7 +20,7 @@ class Book extends Component {
         (this.props.bookData.authors) ? mainAuthor = this.props.bookData.authors[0] : mainAuthor = ""
         return (
             <li>
-                <div className="book">
+                <div className="book" onClick={this.openBook}>
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageLinks.smallThumbnail})` }}></div>
                         <div className="book-shelf-changer">
