@@ -22,8 +22,7 @@ class Bookshelf extends Component {
     }
 
     state = {
-        modalIsOpen: false,
-        currentBook: {}
+        modalIsOpen: false
     }
 
     componentDidMount() {
@@ -45,6 +44,7 @@ class Bookshelf extends Component {
     }
 
     openBookDetails = (bookData) => {
+        console.log(bookData)
         this.setState({ currentBook: bookData });
         this.openModal()
     }
@@ -58,16 +58,27 @@ class Bookshelf extends Component {
                     onRequestClose={this.closeModal}
                     style={modalStyle}
                     contentLabel="Example Modal">
-                    <div>
-                        <button className="close-modal" onClick={this.closeModal}>close</button>
-                        <h2>{this.state.currentBook.title}</h2>
-                        <div>I am a modal</div>
+                    {this.state.currentBook ?
                         <div>
-                            {/* {this.state.currentBook ? <img  src={this.state.currentBook.imageLinks.thumbnail}/> : <div></div> } */}
-                            <div className="image-modal"></div>
-                            <div className="description-modal"></div>
+                            <button className="close-modal" onClick={this.closeModal}>close</button>
+                            <h2>{this.state.currentBook.title}</h2>
+                            <div className="modal-content">
+                                <div className="img-modal">
+                                    <img src={this.state.currentBook.imageLinks.thumbnail} />
+                                    <select defaultValue={this.state.currentBook.shelf || "none"} onChange={(event) => { this.changeShelf(this.state.currentBook.id, event.target.value) }}>
+                                        <option value="none" disabled>Move to...</option>
+                                        <option value="currentlyReading">Currently Reading</option>
+                                        <option value="wantToRead">Want to Read</option>
+                                        <option value="read">Read</option>
+                                        <option value="none">None</option>
+                                    </select>
+                                </div>
+                                <div className="description-modal">
+                                    <p>{this.state.currentBook.description}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        : <div></div>}
                 </Modal>
                 <h2 className="bookshelf-title">{shelfTitle}</h2>
                 <div className="bookshelf-books">

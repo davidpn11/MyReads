@@ -172,3 +172,27 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.img-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-modal {
+  width: 300px;
+  height: 200px;
+  margin-left: 20px;
+  /* background-color:blue; */
+}
